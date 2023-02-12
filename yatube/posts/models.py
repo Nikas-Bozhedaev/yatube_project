@@ -6,7 +6,7 @@ User = get_user_model()
 class Group(models.Model):
     title = models.TextField()
 
-    slug = models.SlugField('group/<slug>/')
+    slug = models.SlugField(unique=True)
 
     description = models.TextField()
 
@@ -29,4 +29,5 @@ class Post(models.Model):
         blank=True,
         null=True,
         on_delete=models.CASCADE,
+        related_name='posts'
     )
